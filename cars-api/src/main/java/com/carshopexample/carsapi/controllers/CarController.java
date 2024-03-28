@@ -2,8 +2,8 @@ package com.carshopexample.carsapi.controllers;
 
 import java.util.List;
 
-import com.carshopexample.carsapi.model.Car;
-import com.carshopexample.carsapi.model.User;
+import com.carshopexample.carsapi.model.Cars;
+import com.carshopexample.carsapi.model.Users;
 import com.carshopexample.carsapi.repos.CarRepository;
 import com.carshopexample.carsapi.repos.UserRepository;
 import org.springframework.http.ResponseEntity;
@@ -23,32 +23,32 @@ public class CarController {
 
     // Create a new car
     @PostMapping("/{userId}")
-    public Car createCar(@PathVariable Long userId, @RequestBody Car car) throws Exception {
-        User user = userRepository.findById(userId).orElseThrow(() -> new Exception("User not found"));
+    public Cars createCar(@PathVariable Long userId, @RequestBody Cars car) throws Exception {
+        Users user = userRepository.findById(userId).orElseThrow(() -> new Exception("User not found"));
         car.setUser(user);
         return carRepository.save(car);
     }
 
     // Get all cars
     @GetMapping
-    public List<Car> getAllCars() {
+    public List<Cars> getAllCars() {
         return carRepository.findAll();
     }
 
     // Get a car by id
     @GetMapping("/{id}")
-    public Car getCarById(@PathVariable Long id) throws Exception {
+    public Cars getCarById(@PathVariable Long id) throws Exception {
         return carRepository.findById(id).orElseThrow(() -> new Exception("Car not found"));
     }
 
     // Update a car
     @PutMapping("/{id}")
-    public Car updateCar(@PathVariable Long id, @RequestBody Car carDetails) throws Exception {
-        Car car = carRepository.findById(id).orElseThrow(() -> new Exception("Car not found"));
+    public Cars updateCar(@PathVariable Long id, @RequestBody Cars carDetails) throws Exception {
+        Cars car = carRepository.findById(id).orElseThrow(() -> new Exception("Car not found"));
 
         car.setBrand(carDetails.getBrand());
         car.setType(carDetails.getType());
-        car.setDesc(carDetails.getDesc());
+        car.setDescri(carDetails.getDescri());
         car.setPrice(carDetails.getPrice());
 
         return carRepository.save(car);
@@ -58,7 +58,7 @@ public class CarController {
     // Delete a car
     @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteCar(@PathVariable Long id) throws Exception {
-        Car car = carRepository.findById(id).orElseThrow(() -> new Exception("Car not found"));
+        Cars car = carRepository.findById(id).orElseThrow(() -> new Exception("Car not found"));
         carRepository.delete(car);
         return ResponseEntity.ok().build();
     }

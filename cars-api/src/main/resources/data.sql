@@ -1,12 +1,8 @@
--- Inserting initial data into the User table
-INSERT INTO user (name, email, password) VALUES ('User1', 'user1@example.com', 'password1hashed');
-INSERT INTO user (name, email, password) VALUES ('User2', 'user2@example.com', 'password2hashed');
-INSERT INTO user (name, email, password) VALUES ('User3', 'user3@example.com', 'password3hashed');
+INSERT INTO Users(id, name, email, password) VALUES
+                                                 (1, 'John Doe', 'john.doe@example.com', '654jkh65klj6k54j6l'),
+                                                 (2, 'Jane Doe', 'jane.doe@example.com', 'k6j54k6hghjkh3jkh3');
 
--- Inserting initial data into the Car table
-INSERT INTO car (brand, type, desc, price, user_id) VALUES ('Tesla', 'Model S', 'Desc1', 10000, 1);
-INSERT INTO car (brand, type, desc, price, user_id) VALUES ('Ford', 'Mustang', 'Desc2', 20000, 1);
-INSERT INTO car (brand, type, desc, price, user_id) VALUES ('Toyota', 'Corolla', 'Desc3', 30000, 2);
-INSERT INTO car (brand, type, desc, price, user_id) VALUES ('BMW', 'X5', 'Desc4', 40000, 2);
-INSERT INTO car (brand, type, desc, price, user_id) VALUES ('Audi', 'A6', 'Desc5', 50000, 3);
-INSERT INTO car (brand, type, desc, price, user_id) VALUES ('Mercedes', 'C-Class', 'Desc6', 60000, 3);
+INSERT INTO Cars(id, brand, type, descri, price, user_id) VALUES
+                                                            (1, 'Toyota', 'Sedan', 'A comfortable 4-seater', 20000, 1),
+                                                            (2, 'Honda', 'SUV', 'A large and safe family car', 30000, 1),
+                                                            (3, 'Ford', 'Pickup', 'Strong and durable', 25000, 2);

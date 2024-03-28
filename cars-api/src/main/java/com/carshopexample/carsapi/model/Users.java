@@ -1,36 +1,33 @@
 package com.carshopexample.carsapi.model;
 
+
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-import jakarta.persistence.*;
 
+import java.util.List;
 
 @Entity
-public class Car {
+public class Users {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Getter
-    @Setter
-    private String brand;
     @Setter
     @Getter
-    private String type;
-    @Setter
-    @Getter
-    private String desc;
-    @Setter
-    @Getter
-    private int price;
+    private String name;
 
-
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    @Getter
     @Setter
-    private User user;
+    @Getter
+    private String email;
 
+    @Setter
+    @Getter
+    private String password;
+
+    @Getter
+    @OneToMany(mappedBy = "user")
+    private List<Cars> cars;
 
     // getters and setters
 }
